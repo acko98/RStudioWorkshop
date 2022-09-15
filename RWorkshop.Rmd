@@ -1,0 +1,56 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Packages
+```{r}
+library(haven) # use haven to import a SAS data set
+library(ggplot2)  # perform data visualization
+library(dplyr)  # perform data wrangling and transformation
+library(gt)  # create tables (tfrmt - additional package - part of pharmaverse)
+# NOTE: gt package is not part of the tidyverse!
+# tplyr - backend package for working with clinical safety summaries
+# start with tidyverse and then fill in the gaps with pharmaverse
+```
+
+Import Datasets (adae and adsl)
+```{r}
+adae <- read_sas("https://github.com/elong0527/r4csr/raw/master/data-adam/adae.sas7bdat", 
+    NULL)
+
+# Let's look at the data through some ggplot2 visualizations - 
+adae %>%
+  filter(!(AEREL %in% "")) %>%
+  ggplot() +
+  aes(x = AESEV, fill = TRTA) + 
+  geom_bar() + 
+  scale_fill_hue(direction = 1) + 
+  theme_minimal()
+
+adsl <- read_sas("https://github.com/elong0527/r4csr/raw/master/data-adam/adsl.sas7bdat", 
+    NULL)
+
+# Let's look at the data through some ggplot2 visualizations - 
+
+
+```
+
+
+
+
+Prepare the Data
+```{r}
+# Wrangling the data in two different ways - 
+
+```
+
+Visualization
+```{r}
+
+```
+
+Table
+```{r}
+
+```
